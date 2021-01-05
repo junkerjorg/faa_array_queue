@@ -1,0 +1,16 @@
+[package]
+name = "faa_array_queue"
+version = "0.1.0"
+authors = ["junkerjorg <junkerjorg(twenty-one)(at)protonmail(dot)ch>"]
+edition = "2018"
+keywords = ["lock-free", "queue", "mpmc"]
+description = "FAAArrayQueue implementation for Rust."
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/junkerjorg/faa_array_queue"
+repository = "https://github.com/junkerjorg/faa_array_queue"
+categories = ["concurrency", "lock-free"]
+
+[dependencies]
+peril = { version = "0.4" }
+array-macro = { version = "2.0" }
