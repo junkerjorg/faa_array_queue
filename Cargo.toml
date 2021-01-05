@@ -1,6 +1,6 @@
 [package]
 name = "faa_array_queue"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["junkerjorg <junkerjorg(twenty-one)(at)protonmail(dot)ch>"]
 edition = "2018"
 keywords = ["lock-free", "queue", "mpmc"]

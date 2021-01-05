@@ -112,8 +112,10 @@ impl<T: Send> Node<T> {
             .is_ok()
     }
 }
+#[repr(align(128))]
+struct AlignedHazardPtr<T: Send>(HazardPointer<T>);
 
-/// lock free mpmc queue
+/// a lock free mpmc queue
 ///
 /// # Examples
 ///
@@ -122,8 +124,6 @@ impl<T: Send> Node<T> {
 ///
 /// let queue = FaaArrayQueue::<usize>::default();
 /// ```
-#[repr(align(128))]
-struct AlignedHazardPtr<T: Send>(HazardPointer<T>);
 pub struct FaaArrayQueue<T: Send> {
     registry: HazardRegistry<Node<T>>,
     head: AlignedHazardPtr<Node<T>>,
