@@ -15,6 +15,16 @@ Add these lines to your `Cargo.toml`:
 faa_array_queue = "0.1"
 ```
 
+and use the queue like this:
+
+```rust
+use faa_array_queue::FaaArrayQueue;
+
+let queue = FaaArrayQueue::<usize>::default();
+queue.enqueue(1337);
+assert!(queue.dequeue().unwrap() == 1337);
+```
+
 ## License
 
 Licensed under [MIT license](http://opensource.org/licenses/MIT)
