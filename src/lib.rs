@@ -155,7 +155,6 @@ impl<T: Send> Default for FaaArrayQueue<T> {
 }
 
 impl<T: Send> FaaArrayQueue<T> {
-
     /// add an item to the tail of the queue
     ///
     /// # Arguments
@@ -227,7 +226,7 @@ impl<T: Send> FaaArrayQueue<T> {
     ///
     /// # Arguments
     ///
-    /// * `return` - Some item removed or None if the queue is empty 
+    /// * `return` - Some item removed or None if the queue is empty
     ///
     /// # Examples
     ///
