@@ -113,6 +113,15 @@ impl<T: Send> Node<T> {
     }
 }
 
+/// lock free mpmc queue
+///
+/// # Examples
+///
+/// ```
+/// use faa_array_queue::FaaArrayQueue;
+///
+/// let queue = FaaArrayQueue::<usize>::default();
+/// ```
 #[repr(align(128))]
 struct AlignedHazardPtr<T: Send>(HazardPointer<T>);
 pub struct FaaArrayQueue<T: Send> {
@@ -146,6 +155,22 @@ impl<T: Send> Default for FaaArrayQueue<T> {
 }
 
 impl<T: Send> FaaArrayQueue<T> {
+
+    /// add an item to the tail of the queue
+    ///
+    /// # Arguments
+    ///
+    /// * `item` - the item to add
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use faa_array_queue::FaaArrayQueue;
+    ///
+    /// let queue = FaaArrayQueue::<usize>::default();
+    /// queue.enqueue(1337);
+    /// assert!(queue.dequeue().unwrap() == 1337);
+    /// ```
     pub fn enqueue(&self, item: T) {
         let item = Box::new(item);
         let item = Box::into_raw(item);
@@ -198,6 +223,20 @@ impl<T: Send> FaaArrayQueue<T> {
         }
     }
 
+    /// remove an item from the head of the queue
+    ///
+    /// # Arguments
+    ///
+    /// * `return` - Some item removed or None if the queue is empty 
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use faa_array_queue::FaaArrayQueue;
+    ///
+    /// let queue = FaaArrayQueue::<usize>::default();
+    /// assert!(queue.dequeue().is_none());
+    /// ```
     pub fn dequeue(&self) -> Option<T> {
         let mut record = HazardRecord::default();
         loop {
