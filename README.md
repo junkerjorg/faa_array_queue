@@ -4,7 +4,7 @@
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 # faa_array_queue
-Fetch-And-Add Array Queue implementation for Rust.
+Fetch-And-Add Array Queue (a lock free mpmc queue) implementation for Rust.
 
 ## Usage
 
